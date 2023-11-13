@@ -31,8 +31,7 @@ async def lame_message_handler(message: types.Message) -> None:
 
     try:
         # расположение файла с иторией общения с данным персонажем
-        program_dir = os.path.dirname(__file__)
-        messages_file = str(os.path.join(program_dir, f'{user_id}.txt'))
+        messages_file = str(os.path.join(dialogues_folder, f'{user_id}.txt'))
 
         # если этого файла нет, создаем его
         try:
@@ -83,4 +82,11 @@ async def main() -> None:
 
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
+
+    # создаем папку для диалогов
+    if not os.path.isdir("message_history"):
+        os.mkdir("message_history")
+    program_dir = os.path.dirname(__file__)
+    dialogues_folder = os.path.join(program_dir, "message_history")
+
     asyncio.run(main())
