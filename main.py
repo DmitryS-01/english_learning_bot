@@ -84,9 +84,9 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 
     # создаем папку для диалогов
-    if not os.path.isdir("message_history"):
-        os.mkdir("message_history")
+    if not os.path.isdir("dialogues"):
+        os.mkdir("dialogues")
     program_dir = os.path.dirname(__file__)
-    dialogues_folder = os.path.join(program_dir, "message_history")
+    dialogues_folder = os.path.join(program_dir, "dialogues")
 
     asyncio.run(main())
